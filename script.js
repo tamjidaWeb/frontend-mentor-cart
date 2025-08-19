@@ -18,6 +18,7 @@ cartBtns.forEach(cartBtn => {
 });
 const decrease=()=>{
     const itemVal = document.getElementById('text-box');
+    
     let correntVal = parseInt(itemVal.innerText)
     if(correntVal <=0){
         itemVal.innerText = 0;
@@ -31,6 +32,19 @@ const decrease=()=>{
 
 const increase = () =>{
     const itemVal = document.getElementById('text-box');
-    
+    let plus = document.querySelector('.plus')
+        let correntVal = parseInt(itemVal.innerText)
+
+    if(correntVal >=5){
+        itemVal.innerText = 5;
+        plus.classList.add('bg-red-500');
+        alert('more than 5 is not allowed');
+        return;
+
+    }
+    else{
+        itemVal.innerText = correntVal + 1;
+        // itemVal.classList.add('bg-green-500')
+    }
 }
 
