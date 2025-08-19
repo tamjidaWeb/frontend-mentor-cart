@@ -29,5 +29,8 @@ const decrease=()=>{
     }
 }
 
-const 
+const increase = () =>{
+    const itemVal = document.getElementById('text-box');
+    
+}
 
