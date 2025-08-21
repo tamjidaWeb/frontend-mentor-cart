@@ -5,7 +5,7 @@ cartBtns.forEach(cartBtn => {
     const counterDiv = document.createElement('div');
     counterDiv.className = "counter hidden flex items-center gap-6";
     counterDiv.innerHTML = `
-        <button class="minus bg-red-600 border rounded-full w-6 h-6 flex justify-center items-center">-</button>
+        <button onclick="minus('itemVal)" class="minus bg-red-600 border rounded-full w-6 h-6 flex justify-center items-center">-</button>
         <span class="quantity">1</span>
         <button class="plus bg-purple-600 border rounded-full w-6 h-6 flex justify-center items-center">+</button>
     `;
@@ -44,10 +44,16 @@ cartBtns.forEach(cartBtn => {
         if (quantity > 0) {
             quantity--;
             quantityEl.innerText = quantity;
+            
         } else {
             alert('Cannot go below 0');
         }
     });
+
+
+    const minus = (itemPrice)=>{
+        const itemVal = document.getElementById(itemPrice);
+    }
 });
 
 
