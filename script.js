@@ -49,7 +49,7 @@ cartBtns.forEach(cartBtn => {
         }
     });
 });
-,
+
 
 
 
