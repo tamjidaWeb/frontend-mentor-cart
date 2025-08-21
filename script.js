@@ -1,50 +1,55 @@
 const cartBtns = document.querySelectorAll('.cart-btn');
 
 cartBtns.forEach(cartBtn => {
-    const originalCartBtn = cartBtn.innerHTML;
+    const addToCart = cartBtn.querySelector('.label'); // "Add to Cart" text
+    const counterDiv = document.createElement('div');
+    counterDiv.className = "counter hidden flex items-center gap-6";
+    counterDiv.innerHTML = `
+        <button class="minus bg-red-600 border rounded-full w-6 h-6 flex justify-center items-center">-</button>
+        <span class="quantity">1</span>
+        <button class="plus bg-purple-600 border rounded-full w-6 h-6 flex justify-center items-center">+</button>
+    `;
+    cartBtn.appendChild(counterDiv);
 
+    const quantityEl = counterDiv.querySelector('.quantity');
+    const addToCartLabel = document.querySelectorAll('#addto-Cart')
+    let quantity = 1;
+
+    // show counter on hover
     cartBtn.addEventListener('mouseenter', () => {
-        cartBtn.innerHTML = `
-            <div class="flex items-center gap-6">
-        <button onclick='decrease()' class='minus bg-red-600 border rounded-full w-6 h-6 flex justify-center items-center'>-</button>
-        <span id="text-box" class='quantity'>1</span>
-        <button onclick='increase()' class='plus bg-purple-600 border rounded-full w-6 h-6 flex justify-center items-center'>+</button>
-      </div> `;
+        addToCart.classList.add('hidden');
+        counterDiv.classList.remove('hidden');
+        addToCartLabel.classList.add('hidden');
+    
     });
 
+    // show "Add to Cart" again when leaving (but keep quantity)
     cartBtn.addEventListener('mouseleave', () => {
-        cartBtn.innerHTML = originalCartBtn;
+        addToCart.classList.remove('hidden');
+        counterDiv.classList.add('hidden');
+        addToCartLabel.classList.remove('hidden')
+    });
+
+    // handle plus/minus
+    counterDiv.querySelector('.plus').addEventListener('click', () => {
+        if (quantity < 5) {
+            quantity++;
+            quantityEl.innerText = quantity;
+        } else {
+            alert('Max 5 allowed');
+        }
+    });
+
+    counterDiv.querySelector('.minus').addEventListener('click', () => {
+        if (quantity > 0) {
+            quantity--;
+            quantityEl.innerText = quantity;
+        } else {
+            alert('Cannot go below 0');
+        }
     });
 });
-const decrease=()=>{
-    const itemVal = document.getElementById('text-box');
-    
-    let correntVal = parseInt(itemVal.innerText)
-    if(correntVal <=0){
-        itemVal.innerText = 0;
-        alert('negative number is not valid')
-    }
-    else{
-        itemVal.innerText = correntVal - 1;
-        itemVal.classList.add='bg-red-500'
-    }
-}
+,
 
-const increase = () =>{
-    const itemVal = document.getElementById('text-box');
-    let plus = document.querySelector('.plus')
-        let correntVal = parseInt(itemVal.innerText)
 
-    if(correntVal >=5){
-        itemVal.innerText = 5;
-        plus.classList.add('bg-red-500');
-        alert('more than 5 is not allowed');
-        return;
-
-    }
-    else{
-        itemVal.innerText = correntVal + 1;
-        // itemVal.classList.add('bg-green-500')
-    }
-}
 
