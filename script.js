@@ -32,9 +32,14 @@ cartBtns.forEach(cartBtn => {
 
     // handle plus/minus
     counterDiv.querySelector('.plus').addEventListener('click', () => {
+        const removeHidden = document.getElementById('remove-hidden');
+        const hiddenCart = document.getElementById('hidden-cart');
         if (quantity < 5) {
             quantity++;
             quantityEl.innerText = quantity;
+            removeHidden.classList.remove('hidden');
+            hiddenCart.classList.add('hidden');
+            
         } else {
             alert('Max 5 allowed');
         }
@@ -44,7 +49,7 @@ cartBtns.forEach(cartBtn => {
         if (quantity > 0) {
             quantity--;
             quantityEl.innerText = quantity;
-            
+
         } else {
             alert('Cannot go below 0');
         }

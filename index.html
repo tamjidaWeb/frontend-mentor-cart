@@ -84,10 +84,19 @@
        <!-- cart -->
 <!-- Cart -->
 <div class="w-auto md:h-full lg:w-auto max-w-sm text-center lg:static   lg:mt-0 top-1 bottom-0 left-0 right-0 bg-white p-4 shadow-md z-10">
-    <h4 class="text-orange-600 font-bold text-xl mb-4">Your Cart (0)</h4>
-    <div id="hidden-cart" class="flex flex-col items-center py-4">
-        <img src="assets/images/illustration-empty-cart.svg" alt="Empty cart" class="w-24 mb-4">
+    <h4 class="text-orange-600 font-bold text-xl mb-4">Your Cart (<span id="cart-number">0</span> )</h4>
+    <div class="flex flex-col items-center py-4">
+        <div id="hidden-cart" class="flex flex-col items-center ">
+            <img src="assets/images/illustration-empty-cart.svg" alt="Empty cart" class="w-24 mb-4">
         <p class="text-center text-sm text-gray-500">Your added items will appear here i wanna take this i dont want to do that so why this happening</p>
+        </div>
+        <div id="remove-hidden" class="hidden">
+    
+             <p>Product name <span>cross btn</span></p>
+             <p>amount <span>price</span></p>
+             <hr>
+
+        </div>
 <!-- You can open the modal using ID.showModal() method -->
 <button class="btn" onclick="my_modal_3.showModal()">open modal</button>
 <dialog id="my_modal_3" class="modal">
