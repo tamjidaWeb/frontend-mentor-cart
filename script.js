@@ -3,8 +3,11 @@ const cartNumber = document.getElementById('cart-number');
 const hiddenCart = document.getElementById('hidden-cart');
 const removeHidden = document.getElementById('remove-hidden');
 const cartItemsContainer = document.getElementById('cart-items'); // make sure this div exists in your cart section
+const cartTotalEl = document.getElementById('cart-total');
+const confirmedBtn = document.querySelector('.btn-confirmed');
 
 let totalCart = 0;
+let totalPrice = 0;
 
 cartBtns.forEach(cartBtn => {
     const addToCart = cartBtn.querySelector('.label'); 
@@ -44,22 +47,25 @@ cartBtns.forEach(cartBtn => {
         if (quantity < 5) {
             quantity++;
             totalCart++;
+            totalPrice += productPrice;
+
             quantityEl.innerText = quantity;
             cartNumber.innerText = totalCart;
 
             removeHidden.classList.remove('hidden');
             hiddenCart.classList.add('hidden');
+            confirmedBtn.classList.remove('hidden')
 
             // add or update item row
             let itemRow = document.querySelector(`#cart-item-${productName.replace(/\s+/g, '-')}`);
-            let total=0;
+            
             if (!itemRow) {
                 itemRow = document.createElement('p');
                 itemRow.id = `cart-item-${productName.replace(/\s+/g, '-')}`;
                 cartItemsContainer.appendChild(itemRow);
             }
             itemRow.textContent = `${productName} x ${quantity} = $${(quantity * productPrice).toFixed(2)}`;
-            
+            cartTotalEl.textContent = `Total: $${totalPrice.toFixed(2)}`;
         } else {
             alert('Max 5 allowed');
         }
@@ -88,6 +94,7 @@ cartBtns.forEach(cartBtn => {
                 removeHidden.classList.add('hidden');
                 hiddenCart.classList.remove('hidden');
             }
+             cartTotalEl.textContent = `Total: $${totalPrice.toFixed(2)}`;
         }
     });
 });
