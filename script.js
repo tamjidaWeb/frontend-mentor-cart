@@ -65,7 +65,24 @@ cartBtns.forEach(cartBtn => {
                 cartItemsContainer.appendChild(itemRow);
             }
             itemRow.textContent = `${productName} x ${quantity} = $${(quantity * productPrice).toFixed(2)}`;
-            cartTotalEl.textContent = `Total: $${totalPrice.toFixed(2)}`;
+            cartTotalEl.textContent = `Order Total: $${totalPrice.toFixed(2)}`;
+            // Confirm button click
+confirmedBtn.addEventListener('click', () => {
+    // collect all cart items
+    let itemsSummary = "";
+    const cartItems = cartItemsContainer.querySelectorAll("p");
+
+    cartItems.forEach(item => {
+        itemsSummary += item.textContent + "\n";  // take each line of cart
+    });
+
+    // add total
+    itemsSummary += "\n" + cartTotalEl.textContent;
+
+    // popup message
+    alert("✅ Your Order:\n\n" + itemsSummary);
+});
+
         } else {
             alert('Max 5 allowed');
         }
@@ -94,7 +111,9 @@ cartBtns.forEach(cartBtn => {
                 removeHidden.classList.add('hidden');
                 hiddenCart.classList.remove('hidden');
             }
-             cartTotalEl.textContent = `Total: $${totalPrice.toFixed(2)}`;
+             cartTotalEl.textContent = `Order Total: $${totalPrice.toFixed(2)}`;
         }
     });
 });
+
+
