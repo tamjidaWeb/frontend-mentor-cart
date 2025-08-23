@@ -52,12 +52,14 @@ cartBtns.forEach(cartBtn => {
 
             // add or update item row
             let itemRow = document.querySelector(`#cart-item-${productName.replace(/\s+/g, '-')}`);
+            let total=0;
             if (!itemRow) {
                 itemRow = document.createElement('p');
                 itemRow.id = `cart-item-${productName.replace(/\s+/g, '-')}`;
                 cartItemsContainer.appendChild(itemRow);
             }
             itemRow.textContent = `${productName} x ${quantity} = $${(quantity * productPrice).toFixed(2)}`;
+            
         } else {
             alert('Max 5 allowed');
         }
